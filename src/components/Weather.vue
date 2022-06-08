@@ -42,13 +42,18 @@ export default {
   },
   methods: {
     fetchWeather() {
-      axios.get("http://ip-api.com/json").then((res) => {
-        return axios
-          .get(
-            `http://api.openweathermap.org/data/2.5/weather?q=${res.data.city}&appid=${key.weather_api}`
+          axios.get(
+            // http://api.openweathermap.org/data/2.5/weather?q=shenzhen&appid=e6e2b3edef8ae30ce581098773c901de
+            `http://api.openweathermap.org/data/2.5/weather?q=shenzhen&appid=${key.weather_api}`
           )
           .then((res) => (this.weatherData = res.data));
-      });
+      // axios.get("http://ip-api.com/json").then((res) => {
+      //   return axios.get(
+      //       // http://api.openweathermap.org/data/2.5/weather?q=shenzhen&appid=e6e2b3edef8ae30ce581098773c901de
+      //       `http://api.openweathermap.org/data/2.5/weather?q=${res.data.city}&appid=${key.weather_api}`
+      //     )
+      //     .then((res) => (this.weatherData = res.data));
+      // });
     },
     changeMetric() {
       if (this.lock) return;
