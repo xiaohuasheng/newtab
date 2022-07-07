@@ -9,7 +9,14 @@
     </div>
     <div class="input-set">
       <input
+        v-model="title"
+        type="text"
+        placeholder="title"
+        :style="{ 'background-color': selectedGradient.start }"
+      />
+      <input
         v-model="url"
+        placeholder="url"
         ref="inp"
         type="text"
         :style="{ 'background-color': selectedGradient.start }"
@@ -44,6 +51,7 @@ export default {
   },
   data() {
     return {
+      title: "",
       url: "",
       incorrectURL: false,
       emojis: [
@@ -82,16 +90,17 @@ export default {
   },
   computed: {
     validURL() {
-      var pattern = new RegExp(
-        "^(https?:\\/\\/)?" + // protocol
-          "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
-          "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
-          "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
-          "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
-          "(\\#[-a-z\\d_]*)?$",
-        "i"
-      ); // fragment locator
-      return !!pattern.test(this.url);
+      // var pattern = new RegExp(
+      //   "^(https?:\\/\\/)?" + // protocol
+      //     "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+      //     "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+      //     "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+      //     "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+      //     "(\\#[-a-z\\d_]*)?$",
+      //   "i"
+      // ); // fragment locator
+      // return !!pattern.test(this.url);
+      return true
     },
   },
   methods: {
@@ -105,7 +114,7 @@ export default {
         this.$emit(
           "addWebsite",
           "https://logo.clearbit.com/" + this.url,
-          this.url
+          this.url, this.title
         );
 
         this.fetchIconsFromAPI();
@@ -137,6 +146,7 @@ export default {
             })
           );
           this.url = "";
+          this.title = "";
         });
     },
   },

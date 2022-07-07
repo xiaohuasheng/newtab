@@ -192,9 +192,11 @@ export default {
       this.selectedGradient = a;
       localStorage.setItem("gradient", JSON.stringify(this.selectedGradient));
     },
-    addWebsite(iconURLs, url) {
-      const webName = url.replace(/.+\/\/|www.|\..+/g, "");
-      const webNameCaps = webName.charAt(0).toUpperCase() + webName.slice(1);
+    addWebsite(iconURLs, url, webNameCaps) {
+      if (webNameCaps == "") {
+        const webName = url.replace(/.+\/\/|www.|\..+/g, "");
+        webNameCaps = webName.charAt(0).toUpperCase() + webName.slice(1);
+      }
       const webObj = {
         title: webNameCaps,
         icons: [iconURLs],
