@@ -1,7 +1,7 @@
 
 ```
 npm run serve // 调试
-npm run build // 打包
+npm run build // 打包，把manifest.json拷进去
 ```
 # Penumbra
 ![enter image description here](https://miro.medium.com/max/1920/1*cU5qrgkS3_dDo1gYlm02yw.png)

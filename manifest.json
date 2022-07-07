@@ -1,0 +1,9 @@
+{
+	"manifest_version":  2,
+	"name":  "Penumbra - Newtab Minified",
+	"version":  "0.8",
+	"chrome_url_overrides":  {
+	"newtab":  "./index.html"
+	},
+	"description":  "A minified home screen."
+}
